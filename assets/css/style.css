@@ -38,6 +38,8 @@ html {
 }
 
 .card {
+  resize: both;
+  overflow: auto;
   position: absolute;
   width: 40%;
   display: block;

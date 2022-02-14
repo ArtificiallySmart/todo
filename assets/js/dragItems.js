@@ -1,7 +1,11 @@
 dragElement(document.getElementById("dragClock"));
-// dragElement(document.getElementById("dragTodo"));
+dragElement(document.getElementById("dragTodo"));
 
 function dragElement(elmnt) {
+    let position = JSON.parse(localStorage.getItem(elmnt.id)) || [];
+    elmnt.style.top = position[0];
+    elmnt.style.left = position[1];
+
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(elmnt.id + "header")) {
         // if present, the header is where you move the DIV from:
@@ -39,5 +43,10 @@ function dragElement(elmnt) {
         // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
+        storePosition();
+    }
+
+    function storePosition() {
+        localStorage.setItem(elmnt.id, JSON.stringify([elmnt.style.top, elmnt.style.left]));
     }
 }

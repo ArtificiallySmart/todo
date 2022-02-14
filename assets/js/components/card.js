@@ -30,15 +30,13 @@ export default {
     },
     template: /*html*/`
     <div class="card" id="dragTodo">
-            <div class=" card-header">
+            <div class="card-header">
                 <h3>To Do:</h3>
             </div>
             <div class="card-body">
 
-                
-
                 <div v-for="(todo, index) in todoList" :key="index" class="form-check">
-                    <input class="form-check-input" type="checkbox" :id="todo.id" v-model="todo.complete">
+                    <input class="form-check-input" type="checkbox" :id="todo.id" v-model="todo.complete" @change="storeTodoList">
                     <label class="form-check-label" :for="todo.id">{{todo.task}}</label>
                 </div>
 
